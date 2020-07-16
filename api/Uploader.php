@@ -42,9 +42,10 @@ class Uploader {
         
         for ($i = 0; $i < $total; $i++) {
             $this->handleUploadError($_FILES['userfile']['error'][$i]);
-            $mysqli->query('INSERT INTO images (file_name) VALUES("'.$_FILES['userfile']['name'][$i].'")');
-            $res = move_uploaded_file($_FILES['userfile']['tmp_name'][$i], self::UPLOAD_DIR . time().$_FILES['userfile']['name'][$i]);
+            $mysqli->query('INSERT INTO images (file_name) VALUES("'.time().$_FILES['userfile']['name'][$i].'")');
+            $res = move_uploaded_file($_FILES['userfile']['tmp_name'][$i], self::UPLOAD_DIR .time().$_FILES['userfile']['name'][$i]);
         }
+        $mysqli->close();
         if($res){
             return $this->response(200, ['message' => 'done']);
         }else{

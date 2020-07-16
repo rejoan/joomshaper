@@ -4,12 +4,11 @@ require_once './includes/DBManage.php';
  *  PHP upload
  *
  */
-$img = new Imager();
-$img->getImages();
+$img = new Editor();
+$img->getImageById();
 
-class Imager {
+class Editor {
 
-    const UPLOAD_DIR = '../Gallery/';
 
     /**
      * Uploader constructor
@@ -34,16 +33,15 @@ class Imager {
      *
      * @return [type] [description]
      */
-    public function getImages() {
-        $images = array();
+    public function getImageById() {
+        $imageID = (int) $_GET['id'];
         $dbCommon = new DBManage();
         $mysqli = $dbCommon->connectDatabase();
-        $result = $mysqli->query('SELECT * FROM images LIMIT 0,10');
-        while ($row = $result->fetch_assoc()) {
-            $images[] = array($row['id'],$row['file_name']);
-        }
+        $result = $mysqli->query('SELECT * FROM images WHERE id='.$imageID);
+        $row = $result->fetch_assoc();
+        $image = $row['file_name'];
         $mysqli->close();
-        return $this->response(200, ['files' => $images]);
+        return $this->response(200, ['file' => $image]);
     }
 
     /**

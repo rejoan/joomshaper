@@ -4,17 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import '../dist/css/bootstrap.min.css'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
 
 window.axios = require('axios')
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
+const app = new Vue({
   el: '#app',
   router,
   components: { App },
   template: '<App/>'
 })
+window.App=app;
