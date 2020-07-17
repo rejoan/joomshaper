@@ -38,14 +38,14 @@ class Saver {
         $imageID = (int) $_POST['imgID'];
         $dbCommon = new DBManage();
         $mysqli = $dbCommon->connectDatabase();
-        $result = $mysqli->query('UPDATE images SET styles="'.$imageStyle.'" WHERE id='.$imageID);
+        $mysqli->query('UPDATE images SET styles="'.$imageStyle.'" WHERE id='.$imageID);
         
         $result2 = $mysqli->query('SELECT * FROM images WHERE id='.$imageID);
         $row = $result2->fetch_assoc();
-        $imageStyle = $row['styles'];
+        $imgStyle = $row['styles'];
         
         $mysqli->close();
-        return $this->response(200, ['style' => $imageStyle]);
+        return $this->response(200, ['style' => $imgStyle]);
     }
 
     /**
