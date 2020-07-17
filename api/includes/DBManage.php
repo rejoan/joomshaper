@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Common Db methods
+ */
 class DBManage {
 
     private $password;
@@ -7,6 +10,9 @@ class DBManage {
     private $hostAddress;
     private $userId;
 
+    /**
+     * initialize
+     */
     public function __construct() {
         $this->password = '';
         $this->databaseName = 'joomshaper';
@@ -14,7 +20,10 @@ class DBManage {
         $this->userId = 'root';
     }
 
-
+    /**
+     * connect DB
+     * @return \mysqli
+     */
     public function connectDatabase() {
         // Create connection
         $mysqli = new mysqli($this->hostAddress, $this->userId, $this->password, $this->databaseName);
