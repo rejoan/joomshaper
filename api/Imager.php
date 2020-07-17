@@ -1,9 +1,5 @@
 <?php
 require_once './includes/DBManage.php';
-/**
- *  PHP upload
- *
- */
 $img = new Imager();
 $img->getImages();
 
@@ -11,9 +7,6 @@ class Imager {
 
     const UPLOAD_DIR = '../Gallery/';
 
-    /**
-     * Uploader constructor
-     */
     public function __construct() {
         $this->allowCors();
     }
@@ -30,9 +23,9 @@ class Imager {
     }
 
     /**
-     * Saves the uploaded file
+     * get uploaded files
      *
-     * @return [type] [description]
+     * @return [json] [images name]
      */
     public function getImages() {
         $images = array();

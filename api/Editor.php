@@ -1,18 +1,14 @@
 <?php
 require_once './includes/DBManage.php';
-/**
- *  PHP upload
- *
- */
 $img = new Editor();
 $img->getImageById();
 
 class Editor {
 
 
-    /**
-     * Uploader constructor
-     */
+   /**
+    * 
+    */
     public function __construct() {
         $this->allowCors();
     }
@@ -29,9 +25,8 @@ class Editor {
     }
 
     /**
-     * Saves the uploaded file
-     *
-     * @return [type] [description]
+     * get image by ID
+     * @return json
      */
     public function getImageById() {
         $imageID = (int) $_GET['id'];

@@ -1,18 +1,10 @@
 <?php
 require_once './includes/DBManage.php';
-/**
- *  PHP Save Image
- *
- */
 $img = new Saver();
 $img->saveStyles();
 
 class Saver {
 
-
-    /**
-     * Uploader constructor
-     */
     public function __construct() {
         $this->allowCors();
     }
@@ -29,9 +21,9 @@ class Saver {
     }
 
     /**
-     * Saves the uploaded file
+     * Saves the styke
      *
-     * @return [type] [description]
+     * @return [json] [image class name]
      */
     public function saveStyles() {
         $imageStyle = $_POST['style'];

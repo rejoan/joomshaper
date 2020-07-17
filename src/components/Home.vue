@@ -73,7 +73,6 @@
         mounted(){
             axios.get(this.baseUrl+ '/api/Imager.php').then(response => {
                    this.items = response.data.files
-                   //console.log(response.data.files)
                    
                 }).catch(response => {
                     console.log()
