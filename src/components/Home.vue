@@ -6,11 +6,11 @@
 
         <div class="album py-5 bg-light">
             <div class="container">
-                <div class="row">
+                <div class="row" style="min-height: 400px;">
                     <div class="col-md-4" v-for="item in items">
                         <div class="card mb-4 p-3">
-                            <router-link v-bind:to="/edit/+item[0]"><img class="img img-thumbnail rounded" :src="baseUrl+'/Gallery/'+item[1]"></router-link>
-                            <p class="card-text">img.png</p>
+                            <router-link v-bind:to="/edit/+item[0]"><img style="max-height: 200px;" :class="item[1] == '' ? 'border':''" class="img img-thumbnail rounded" :src="baseUrl+'/Gallery/'+item[1]"></router-link>
+                            <p class="card-text">{{item[1]}}</p>
                         </div>
                     </div>
                 </div>
@@ -42,9 +42,6 @@
             }
         },
         methods: {
-            showEdit(){
-                this.$router.push({name: 'edit', params: {id:50 }});
-            },
             fieldChange(e) {
                 this.attachments = [];
                 let selectedFiles = e.target.files;
@@ -54,8 +51,6 @@
                 for (let i = 0; i < selectedFiles.length; i++) {
                     this.attachments.push(selectedFiles[i]);
                 }
-
-                //console.log(this.attachments);
             },
             uploadFile() {
                 for (let i = 0; i < this.attachments.length; i++) {
